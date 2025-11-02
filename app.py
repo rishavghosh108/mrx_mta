@@ -116,7 +116,7 @@ async def main_async():
     # Initialize Repositories
     logging.info("Initializing repositories...")
     user_repo = UserRepository(config.USER_DB_FILE)
-    queue_repo = QueueRepository(config.QUEUE_DB_FILE, config.QUEUE_DIR)
+    queue_repo = QueueRepository(config.QUEUE_DB_FILE, str(config.QUEUE_DIR))
     policy_repo = PolicyRepository(config.DATA_DIR)
     
     # Initialize Services

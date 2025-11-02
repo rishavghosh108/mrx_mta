@@ -15,6 +15,11 @@ LOG_DIR = BASE_DIR / 'logs'
 # Database
 DB_PATH = str(DATA_DIR / 'mta.db')
 
+# MVC Architecture Database Files
+USER_DB_FILE = str(DATA_DIR / 'users.json')
+QUEUE_DB_FILE = str(DATA_DIR / 'queue.db')
+# QUEUE_DIR remains as Path object for subdirectory operations
+
 # Ensure directories exist
 for directory in [DATA_DIR, QUEUE_DIR, MAILDIR, LOG_DIR]:
     directory.mkdir(parents=True, exist_ok=True)
@@ -86,6 +91,7 @@ AUTH_USERS_FILE = str(DATA_DIR / 'users.json')
 # Failed authentication lockout
 AUTH_MAX_FAILURES = int(os.environ.get('MTA_AUTH_MAX_FAILURES', '5'))
 AUTH_LOCKOUT_DURATION = int(os.environ.get('MTA_AUTH_LOCKOUT_DURATION', '300'))  # 5 minutes
+MAX_AUTH_ATTEMPTS = AUTH_MAX_FAILURES
 
 # ============================================================================
 # Queue Configuration
@@ -178,6 +184,8 @@ RBL_SERVERS = os.environ.get('MTA_RBL_SERVERS', 'zen.spamhaus.org,bl.spamcop.net
 # Greylisting
 GREYLIST_ENABLED = os.environ.get('MTA_GREYLIST_ENABLED', 'False').lower() == 'true'
 GREYLIST_DELAY = int(os.environ.get('MTA_GREYLIST_DELAY', '300'))  # 5 minutes
+GREYLIST_MIN_DELAY = GREYLIST_DELAY
+GREYLIST_MAX_AGE = int(os.environ.get('MTA_GREYLIST_MAX_AGE', str(7 * 24 * 60 * 60)))  # 7 days
 
 # Content filtering
 SPAM_FILTER_ENABLED = os.environ.get('MTA_SPAM_FILTER', 'False').lower() == 'true'
