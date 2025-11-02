@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# MTA Runtime Data
+data/
+logs/
+*.db
+*.db-journal
+
+# TLS Certificates & Keys
+certs/*.key
+certs/*.crt
+certs/*.pem
+
+# Environment & Secrets
+.env
+*.secret
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Backup files
+*.bak
+*.backup
